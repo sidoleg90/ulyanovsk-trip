@@ -4,558 +4,502 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Корпоратив · Ульяновск · 2 июля 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500;6..12,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --sky:       #c5e3f2;
-      --sky-lt:    #e4f3fb;
-      --water:     #2471a3;
-      --water-dk:  #1a5276;
-      --shore:     #f8f0e3;
-      --sand:      #e8d5a8;
-      --forest:    #3a7d54;
-      --sunset:    #d06a38;
-      --gold:      #c09030;
-      --white:     #fdfbf7;
-      --text:      #1c2c38;
-      --text-lt:   #4a6578;
-      --muted:     #7a9aaa;
-      --border:    rgba(36,113,163,.13);
-      --card:      #ffffff;
-      --r:         16px;
+      --bg:      #0d0b09;
+      --surf:    #161310;
+      --card:    #1e1a14;
+      --card2:   #252018;
+      --border:  #2e2820;
+      --gold:    #c9973a;
+      --gold-lt: #e8b95a;
+      --amber:   #e07830;
+      --cream:   #f0e6d0;
+      --muted:   #7a6e5c;
+      --faint:   #3a3228;
+      --r:       14px;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
-      background: var(--white);
-      color: var(--text);
-      font-family: 'Nunito Sans', sans-serif;
-      font-weight: 300;
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
       line-height: 1.7;
       overflow-x: hidden;
     }
 
-    /* ─── HERO ─── */
+    /* ══ HERO ══ */
     .hero {
       position: relative;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
       text-align: center;
-      padding: 2rem 2rem 8rem;
+      padding: 2rem 2rem 7rem;
       overflow: hidden;
     }
 
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
       background:
-        radial-gradient(ellipse 90% 55% at 88% 8%,  rgba(198,148,64,.28)  0%, transparent 52%),
-        radial-gradient(ellipse 70% 50% at 10% 92%, rgba(36,113,163,.2)   0%, transparent 52%),
-        radial-gradient(ellipse 80% 60% at 50% 45%, rgba(197,227,242,.5)  0%, transparent 65%),
-        linear-gradient(175deg, #bcd9ee 0%, #cce4f3 18%, #dde9d4 50%, #f0e4ca 80%, #f7edd8 100%);
-      animation: skyShift 16s ease-in-out infinite alternate;
+        radial-gradient(ellipse 80% 55% at 20% 80%, rgba(201,151,58,.22) 0%, transparent 58%),
+        radial-gradient(ellipse 65% 50% at 82% 18%, rgba(224,120,48,.16) 0%, transparent 58%),
+        radial-gradient(ellipse 100% 70% at 50% 110%, rgba(201,151,58,.25) 0%, transparent 52%),
+        linear-gradient(170deg, #0d0b09 0%, #111009 40%, #150f08 100%);
+      animation: bgPulse 9s ease-in-out infinite alternate;
+    }
+    @keyframes bgPulse { from { opacity:.75; } to { opacity: 1; } }
+
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(201,151,58,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,151,58,.035) 1px, transparent 1px);
+      background-size: 55px 55px;
+      mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 20%, transparent 78%);
     }
 
-    @keyframes skyShift {
-      0%   { filter: hue-rotate(0deg)   brightness(1);    }
-      40%  { filter: hue-rotate(6deg)   brightness(1.03); }
-      100% { filter: hue-rotate(-4deg)  brightness(.97);  }
-    }
-
-    .hero-blob {
-      position: absolute; z-index: 1;
-      border-radius: 50%;
-      filter: blur(70px);
-      pointer-events: none;
-      animation: blobDrift 20s ease-in-out infinite alternate;
-    }
-    .b1 { width: 560px; height: 420px; background: rgba(36,113,163,.18);  top: -120px; right: -80px;  animation-duration: 18s; }
-    .b2 { width: 440px; height: 360px; background: rgba(192,144,48,.17);  bottom: 20px; left: -100px; animation-duration: 22s; animation-direction: alternate-reverse; }
-    .b3 { width: 320px; height: 280px; background: rgba(58,125,84,.12);   top: 35%;  left: 35%;      animation-duration: 14s; }
-    .b4 { width: 250px; height: 200px; background: rgba(208,106,56,.1);   top: 15%;  left: 10%;      animation-duration: 25s; animation-direction: alternate-reverse; }
-
-    @keyframes blobDrift {
-      0%   { transform: translate(0,   0)   scale(1);    }
-      30%  { transform: translate(25px,-18px) scale(1.04); }
-      65%  { transform: translate(-18px,28px) scale(.95); }
-      100% { transform: translate(12px,-8px)  scale(1.02); }
-    }
-
-    .hero-grain {
-      position: absolute; inset: 0; z-index: 2; pointer-events: none;
-      opacity: .025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 180px 180px;
-    }
-
-    .hero-content { position: relative; z-index: 4; max-width: 840px; }
+    .hero-content { position: relative; z-index: 3; max-width: 860px; }
 
     .hero-eyebrow {
-      font-size: .72rem;
-      letter-spacing: .38em;
-      text-transform: uppercase;
-      color: var(--water);
-      margin-bottom: 1.6rem;
-      opacity: 0;
-      animation: fadeUp .8s .3s forwards;
+      font-size: .68rem; letter-spacing: .45em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.8rem;
+      opacity: 0; animation: fadeUp .8s .3s forwards;
     }
 
     .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.2rem, 10vw, 7.5rem);
-      font-weight: 600;
-      line-height: 1.0;
-      color: var(--text);
-      opacity: 0;
-      animation: fadeUp .9s .5s forwards;
+      font-size: clamp(2.8rem, 9vw, 6.8rem);
+      font-weight: 800; line-height: 1.0;
+      letter-spacing: -.025em;
+      color: var(--cream);
+      opacity: 0; animation: fadeUp .9s .5s forwards;
     }
-    .hero-title em {
-      font-style: normal;
-      color: var(--water);
-      display: block;
-    }
+    .hero-title span { color: var(--gold-lt); display: block; }
 
     .hero-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: clamp(1.05rem, 2.8vw, 1.45rem);
-      color: var(--text-lt);
-      margin-top: 1rem;
-      letter-spacing: .01em;
-      opacity: 0;
-      animation: fadeUp .9s .7s forwards;
+      font-size: clamp(.95rem, 2.2vw, 1.2rem);
+      font-weight: 300; color: var(--muted);
+      margin-top: 1rem; letter-spacing: .04em;
+      opacity: 0; animation: fadeUp .9s .7s forwards;
     }
 
     .hero-chips {
-      display: flex; flex-wrap: wrap; gap: .5rem;
-      justify-content: center;
-      margin-top: 2.8rem;
-      opacity: 0;
-      animation: fadeUp .9s .9s forwards;
+      display: flex; flex-wrap: wrap; gap: .55rem;
+      justify-content: center; margin-top: 2.8rem;
+      opacity: 0; animation: fadeUp .9s .9s forwards;
     }
-
     .chip {
-      display: flex; align-items: center; gap: .4rem;
+      display: flex; align-items: center; gap: .45rem;
       padding: .45rem 1.1rem;
-      border: 1px solid rgba(36,113,163,.22);
-      border-radius: 100px;
-      font-size: .82rem;
-      color: var(--text-lt);
-      background: rgba(255,255,255,.6);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border); border-radius: 100px;
+      font-size: .78rem; font-weight: 500; color: var(--muted);
+      background: rgba(255,255,255,.03);
       white-space: nowrap;
     }
+    .chip svg { flex-shrink: 0; }
     .chip-stay {
-      border-color: rgba(192,144,48,.3);
-      background: rgba(255,248,234,.7);
-      color: var(--text);
+      border-color: rgba(201,151,58,.35);
+      background: rgba(201,151,58,.06);
+      color: var(--cream);
     }
-    .chip-stay b { color: var(--gold); font-weight: 600; }
+    .chip-stay b { color: var(--gold); }
 
     .hero-scroll {
       position: absolute; bottom: 4.5rem; left: 50%; transform: translateX(-50%);
-      z-index: 4;
-      display: flex; flex-direction: column; align-items: center; gap: .55rem;
-      font-size: .68rem; letter-spacing: .25em; text-transform: uppercase;
-      color: var(--muted);
-      opacity: 0; animation: fadeUp .8s 1.3s forwards;
+      z-index: 3; display: flex; flex-direction: column; align-items: center; gap: .55rem;
+      font-size: .65rem; letter-spacing: .28em; text-transform: uppercase; color: var(--muted);
+      opacity: 0; animation: fadeUp .8s 1.2s forwards;
     }
     .hero-scroll::after {
-      content: '';
-      width: 1px; height: 52px;
-      background: linear-gradient(to bottom, var(--water), transparent);
+      content: ''; width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
       animation: lineBreath 2s ease-in-out infinite;
     }
-    @keyframes lineBreath {
-      0%,100% { opacity: .3; transform: scaleY(1);   }
-      50%      { opacity: 1;  transform: scaleY(.65); }
-    }
+    @keyframes lineBreath { 0%,100%{opacity:.3}50%{opacity:1} }
 
     .hero-wave {
-      position: absolute; bottom: -2px; left: 0; right: 0; z-index: 3;
+      position: absolute; bottom: -1px; left: 0; right: 0; z-index: 2;
       line-height: 0; pointer-events: none;
     }
     .hero-wave svg { width: 100%; display: block; }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(26px); }
-      to   { opacity: 1; transform: none; }
+      from { opacity:0; transform:translateY(22px); }
+      to   { opacity:1; transform:none; }
     }
 
-    /* ─── FACTS BAR ─── */
+    /* ══ FACTS ══ */
     .facts-bar {
-      background: var(--text);
+      background: var(--surf);
+      border-bottom: 1px solid var(--border);
       padding: 3.5rem 2rem;
     }
     .facts-inner {
-      max-width: 860px; margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      text-align: center;
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem;
     }
+    .fact {
+      display: flex; flex-direction: column; align-items: center; text-align: center; gap: .8rem;
+    }
+    .fact-icon {
+      width: 54px; height: 54px; border-radius: 50%;
+      border: 1.5px solid var(--faint);
+      background: rgba(201,151,58,.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+    }
+    .fact-icon svg { width: 22px; height: 22px; }
     .fact-value {
-      display: block;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem; font-weight: 500;
-      color: var(--sand); line-height: 1;
+      font-size: 2.2rem; font-weight: 700; color: var(--gold-lt);
+      line-height: 1; letter-spacing: -.02em;
     }
-    .fact-label {
-      font-size: .78rem;
-      color: rgba(232,213,168,.45);
-      margin-top: .45rem; letter-spacing: .03em;
-    }
+    .fact-label { font-size: .73rem; color: var(--muted); letter-spacing: .04em; }
 
-    /* ─── LAYOUT ─── */
-    .section {
-      max-width: 960px; margin: 0 auto;
-      padding: 5rem 2rem;
-    }
+    /* ══ LAYOUT ══ */
+    .section { max-width: 960px; margin: 0 auto; padding: 5rem 2rem; }
 
     .section-label {
-      font-size: .7rem; letter-spacing: .35em;
-      text-transform: uppercase; color: var(--water);
-      margin-bottom: 1rem;
+      font-size: .65rem; letter-spacing: .42em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: .9rem; font-weight: 600;
     }
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-      font-weight: 500; line-height: 1.15;
-      color: var(--text); margin-bottom: .8rem;
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800;
+      line-height: 1.15; color: var(--cream); margin-bottom: .7rem;
+      letter-spacing: -.02em;
     }
-    .section-desc { font-size: .93rem; color: var(--text-lt); max-width: 540px; }
+    .section-title em { font-style: normal; color: var(--gold-lt); }
+    .section-desc { font-size: .9rem; color: var(--muted); max-width: 520px; font-weight: 300; }
+
+    .stripe {
+      background: var(--surf);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
 
     .divider {
       border: none; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(36,113,163,.15), transparent);
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
     }
 
-    /* ─── TIMELINE ─── */
+    /* ══ TIMELINE ══ */
     .timeline { margin-top: 3rem; position: relative; }
     .timeline-line {
       position: absolute; left: 88px; top: 0; bottom: 0;
       width: 2px;
-      background: linear-gradient(to bottom, var(--sky), var(--water) 50%, var(--sand));
-      border-radius: 1px; opacity: .6;
+      background: linear-gradient(to bottom, var(--gold) 0%, rgba(201,151,58,.3) 60%, transparent 100%);
+      border-radius: 1px;
     }
     .tl-item {
-      display: grid;
-      grid-template-columns: 88px 20px 1fr;
-      gap: 0 1.5rem;
-      margin-bottom: 2.5rem; align-items: start;
+      display: grid; grid-template-columns: 88px 28px 1fr;
+      gap: 0 1.4rem; margin-bottom: 2.2rem; align-items: start;
     }
     .tl-time {
-      text-align: right; font-size: .79rem; font-weight: 600;
-      color: var(--water); padding-top: .38rem; letter-spacing: .03em;
+      text-align: right; font-size: .75rem; font-weight: 700;
+      color: var(--gold); padding-top: .55rem; letter-spacing: .05em;
     }
     .tl-dot {
-      width: 14px; height: 14px; border-radius: 50%;
-      background: var(--water); border: 3px solid var(--white);
-      box-shadow: 0 0 0 2px var(--water);
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--card); border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
       margin-top: .3rem; justify-self: center; flex-shrink: 0;
-      transition: transform .25s;
+      color: var(--gold); transition: background .25s;
     }
-    .tl-item:hover .tl-dot { transform: scale(1.25); }
+    .tl-dot svg { width: 13px; height: 13px; }
+    .tl-item:hover .tl-dot { background: var(--gold); color: var(--bg); }
+
     .tl-card {
       background: var(--card);
-      border: 1px solid rgba(0,0,0,.065);
+      border: 1px solid var(--border);
       border-radius: var(--r); padding: 1.2rem 1.5rem;
-      box-shadow: 0 4px 18px rgba(0,0,0,.055);
-      transition: box-shadow .3s, transform .3s;
+      transition: border-color .25s, transform .25s;
     }
-    .tl-card:hover { box-shadow: 0 10px 32px rgba(0,0,0,.09); transform: translateY(-2px); }
+    .tl-card:hover { border-color: var(--faint); transform: translateX(4px); }
+
     .tl-badge {
-      display: inline-block; font-size: .68rem;
-      letter-spacing: .1em; text-transform: uppercase;
-      color: var(--water); background: rgba(36,113,163,.09);
-      border-radius: 4px; padding: .15rem .55rem;
-      margin-bottom: .5rem; font-weight: 600;
+      display: inline-block; font-size: .62rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--amber); background: rgba(224,120,48,.12);
+      border-radius: 4px; padding: .18rem .55rem; margin-bottom: .45rem;
     }
     .tl-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.22rem; font-weight: 500;
-      color: var(--text); margin-bottom: .4rem;
+      font-size: 1.05rem; font-weight: 700; color: var(--cream);
+      margin-bottom: .35rem; letter-spacing: -.01em;
     }
-    .tl-card p { font-size: .87rem; color: var(--text-lt); }
+    .tl-card p { font-size: .84rem; color: var(--muted); font-weight: 300; }
     .tl-meta { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
     .meta-pill {
-      font-size: .72rem; padding: .22rem .65rem;
+      font-size: .7rem; padding: .22rem .65rem;
       border-radius: 100px; border: 1px solid var(--border); color: var(--muted);
     }
     .meta-pill.price {
-      border-color: rgba(192,144,48,.3);
-      color: var(--gold); background: rgba(192,144,48,.06);
+      border-color: rgba(201,151,58,.3); color: var(--gold-lt);
+      background: rgba(201,151,58,.07);
     }
 
-    .tl-options-block { display: flex; flex-direction: column; gap: .8rem; margin-top: .8rem; }
+    .tl-options-block { display: flex; flex-direction: column; gap: .75rem; margin-top: .85rem; }
     .tl-option {
-      padding: .9rem 1rem; border-radius: 10px;
-      border: 1px solid var(--border); background: rgba(36,113,163,.025);
+      padding: .85rem 1rem; border-radius: 10px;
+      border: 1px solid var(--faint); background: rgba(255,255,255,.02);
     }
     .tl-option-label {
-      font-size: .77rem; font-weight: 600;
-      color: var(--water); margin-bottom: .35rem; letter-spacing: .01em;
+      font-size: .73rem; font-weight: 700; color: var(--gold);
+      margin-bottom: .35rem; letter-spacing: .03em;
     }
-    .tl-option p { font-size: .84rem; color: var(--text-lt); margin: 0; }
+    .tl-option p { font-size: .83rem; color: var(--muted); font-weight: 300; margin: 0; }
 
-    /* ─── OPTIONS ─── */
-    .options-tabs {
-      display: flex; flex-wrap: wrap; gap: .5rem;
-      margin: 2rem 0 1.5rem;
-    }
+    /* ══ OPTIONS ══ */
+    .options-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 2rem 0 1.5rem; }
     .opt-tab {
-      padding: .55rem 1.15rem; border-radius: 100px;
+      padding: .52rem 1.1rem; border-radius: 100px;
       border: 1.5px solid var(--border); background: transparent;
-      font-family: 'Nunito Sans', sans-serif;
-      font-size: .84rem; color: var(--text-lt);
-      cursor: pointer; transition: all .22s;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .8rem; font-weight: 600; color: var(--muted);
+      cursor: pointer; transition: all .22s; letter-spacing: .03em;
     }
-    .opt-tab:hover { border-color: var(--water); color: var(--water); background: rgba(36,113,163,.04); }
-    .opt-tab.active {
-      background: var(--water); border-color: var(--water);
-      color: #fff; font-weight: 600;
-    }
+    .opt-tab:hover { border-color: var(--gold); color: var(--gold); }
+    .opt-tab.active { background: var(--gold); border-color: var(--gold); color: var(--bg); }
 
     .opt-panels { position: relative; }
     .opt-panel { display: none; }
-    .opt-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .opt-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
 
     .opt-card {
-      background: var(--card);
-      border: 1px solid rgba(0,0,0,.065);
-      border-radius: var(--r); padding: 1.8rem;
-      position: relative;
-      box-shadow: 0 4px 18px rgba(0,0,0,.05);
-      transition: transform .3s, box-shadow .3s;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 1.8rem; position: relative;
+      transition: border-color .28s, transform .28s;
     }
-    .opt-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(0,0,0,.1); }
+    .opt-card:hover { border-color: var(--faint); transform: translateY(-4px); }
+
     .opt-recommend {
-      position: absolute; top: -1px; right: 1.5rem;
-      background: var(--sunset); color: #fff;
-      font-size: .66rem; font-weight: 700;
-      letter-spacing: .1em; text-transform: uppercase;
-      padding: .2rem .75rem; border-radius: 0 0 8px 8px;
+      position: absolute; top: -1px; right: 1.4rem;
+      background: var(--amber); color: var(--bg);
+      font-size: .62rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+      padding: .22rem .75rem; border-radius: 0 0 8px 8px;
     }
-    .opt-icon { font-size: 2rem; display: block; margin-bottom: .8rem; }
+
+    .opt-icon-wrap {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: rgba(201,151,58,.1); border: 1px solid rgba(201,151,58,.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .opt-icon-wrap svg { width: 24px; height: 24px; }
+
     .opt-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-weight: 500;
-      color: var(--text); margin-bottom: .5rem;
+      font-size: 1rem; font-weight: 700; color: var(--cream);
+      margin-bottom: .5rem; letter-spacing: -.01em;
     }
-    .opt-card p { font-size: .87rem; color: var(--text-lt); }
+    .opt-card p { font-size: .84rem; color: var(--muted); font-weight: 300; }
+
     .opt-price-row { display: flex; align-items: baseline; gap: .5rem; margin-top: 1rem; }
     .opt-price {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.85rem; font-weight: 600;
-      color: var(--water); white-space: nowrap;
+      font-size: 1.6rem; font-weight: 800; color: var(--gold-lt);
+      letter-spacing: -.02em; white-space: nowrap;
     }
-    .opt-price-sub { font-size: .8rem; color: var(--muted); }
-    .opt-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
+    .opt-price-sub { font-size: .76rem; color: var(--muted); font-weight: 400; }
+
+    .opt-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .85rem; }
     .opt-tag {
-      font-size: .72rem; padding: .2rem .65rem;
-      border-radius: 100px; border: 1px solid var(--border); color: var(--muted);
+      font-size: .68rem; font-weight: 600; letter-spacing: .04em;
+      padding: .22rem .65rem; border-radius: 100px;
+      border: 1px solid var(--border); color: var(--muted);
     }
     .opt-link {
-      display: inline-block; margin-top: 1rem;
-      font-size: .82rem; color: var(--water);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(36,113,163,.28);
-      padding-bottom: 1px; transition: border-color .2s;
+      display: inline-flex; align-items: center; gap: .3rem;
+      margin-top: 1rem; font-size: .78rem; font-weight: 600;
+      color: var(--gold); text-decoration: none;
+      transition: color .2s;
     }
-    .opt-link::after { content: ' →'; }
-    .opt-link:hover { border-color: var(--water); }
+    .opt-link:hover { color: var(--gold-lt); }
+    .opt-link::after { content: '→'; }
 
-    /* ─── BUDGET ─── */
+    /* ══ BUDGET ══ */
     .budget-grid {
       margin-top: 2.5rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-      gap: 1.2rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(175px,1fr)); gap: 1.2rem;
     }
     .budget-card {
-      background: var(--card);
-      border: 1px solid rgba(0,0,0,.065);
+      background: var(--card); border: 1px solid var(--border);
       border-radius: var(--r); padding: 1.4rem;
-      box-shadow: 0 4px 18px rgba(0,0,0,.05);
-      transition: transform .3s, box-shadow .3s;
+      transition: border-color .25s, transform .25s;
     }
-    .budget-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.09); }
-    .budget-card.highlight {
-      border-color: rgba(36,113,163,.28);
-      box-shadow: 0 4px 22px rgba(36,113,163,.11);
-    }
-    .bc-name {
-      font-size: .73rem; color: var(--muted);
-      margin-bottom: .5rem; text-transform: uppercase; letter-spacing: .07em;
-    }
-    .bc-total {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem; font-weight: 500;
-      color: var(--text); line-height: 1.1;
-    }
-    .bc-per { font-size: .79rem; color: var(--water); margin-top: .2rem; font-weight: 500; }
-    .bc-bar {
-      height: 4px; background: rgba(0,0,0,.07);
-      border-radius: 2px; margin: 1rem 0; overflow: hidden;
-    }
-    .bc-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--water), var(--sky));
-      width: 0; border-radius: 2px; transition: width 1.3s ease;
-    }
-    .bc-items { list-style: none; font-size: .79rem; color: var(--text-lt); }
-    .bc-items li {
-      display: flex; justify-content: space-between;
-      padding: .3rem 0; border-bottom: 1px solid rgba(0,0,0,.05);
-    }
-    .bc-items li:last-child { border: none; }
-    .bc-items span { color: var(--text); font-weight: 500; }
+    .budget-card:hover { border-color: var(--faint); transform: translateY(-3px); }
+    .budget-card.highlight { border-color: rgba(201,151,58,.4); }
 
-    /* ─── CHECKLIST ─── */
+    .bc-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: rgba(201,151,58,.1); border: 1px solid rgba(201,151,58,.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); margin-bottom: .8rem;
+    }
+    .bc-icon svg { width: 16px; height: 16px; }
+    .bc-name { font-size: .68rem; font-weight: 700; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .4rem; }
+    .bc-total { font-size: 1.7rem; font-weight: 800; color: var(--cream); line-height: 1.1; letter-spacing: -.02em; }
+    .bc-per { font-size: .75rem; color: var(--gold); margin-top: .2rem; font-weight: 600; }
+    .bc-bar { height: 3px; background: var(--faint); border-radius: 2px; margin: .9rem 0; overflow: hidden; }
+    .bc-bar-fill { height: 100%; background: linear-gradient(90deg,var(--gold),var(--gold-lt)); width:0; border-radius:2px; transition:width 1.3s ease; }
+    .bc-items { list-style: none; font-size: .76rem; color: var(--muted); }
+    .bc-items li { display:flex; justify-content:space-between; padding:.28rem 0; border-bottom:1px solid var(--border); }
+    .bc-items li:last-child { border:none; }
+    .bc-items span { color:var(--cream); font-weight:600; }
+
+    /* ══ CHECKLIST ══ */
     .checklist {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 1.1rem; margin-top: 2.5rem;
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(265px,1fr)); gap: 1.1rem;
+      margin-top: 2.5rem;
     }
     .check-item {
-      display: grid; grid-template-columns: 44px 1fr; gap: 0 1rem;
-      background: var(--card); border: 1px solid rgba(0,0,0,.065);
-      border-radius: var(--r); padding: 1.1rem 1.2rem 1.1rem 1rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,.04);
-      transition: transform .25s, box-shadow .25s;
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 1.2rem;
+      transition: border-color .25s;
     }
-    .check-item:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.07); }
+    .check-item:hover { border-color: var(--faint); }
     .check-num {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: var(--water); color: #fff;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(201,151,58,.12); border: 1.5px solid rgba(201,151,58,.3);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem; font-weight: 500; flex-shrink: 0;
+      font-size: .9rem; font-weight: 800; color: var(--gold); flex-shrink: 0;
     }
-    .check-text strong {
-      display: block; font-size: .88rem; font-weight: 600;
-      color: var(--text); margin-bottom: .3rem;
-    }
-    .check-text span { font-size: .82rem; color: var(--text-lt); }
+    .check-text strong { display:block; font-size:.87rem; font-weight:700; color:var(--cream); margin-bottom:.3rem; }
+    .check-text span { font-size:.8rem; color:var(--muted); font-weight:300; }
 
-    /* ─── FOOTER ─── */
+    /* ══ FOOTER ══ */
     footer {
-      background: var(--text); color: rgba(232,213,168,.55);
-      text-align: center; padding: 3rem 2rem; font-size: .85rem;
+      background: var(--surf); border-top: 1px solid var(--border);
+      text-align: center; padding: 3rem 2rem;
     }
-    .ft-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem; font-weight: 500;
-      color: var(--sand); margin-bottom: .6rem; letter-spacing: .06em;
+    .ft-logo { font-size: 1.1rem; font-weight: 800; color: var(--gold); margin-bottom: .5rem; letter-spacing: .08em; text-transform: uppercase; }
+    footer p { font-size: .82rem; color: var(--muted); font-weight: 300; }
+
+    /* ══ REVEAL ══ */
+    .reveal { opacity:0; transform:translateY(26px); transition:opacity .65s ease,transform .65s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+    .reveal-delay-1 { transition-delay:.1s; }
+    .reveal-delay-2 { transition-delay:.2s; }
+    .reveal-delay-3 { transition-delay:.3s; }
+    .reveal-delay-4 { transition-delay:.4s; }
+
+    /* ══ MOBILE ══ */
+    @media(max-width:720px){
+      .facts-inner { grid-template-columns:repeat(2,1fr); gap:1.2rem; }
+      .opt-panel.active { grid-template-columns:1fr; }
+      .timeline-line { left:64px; }
+      .tl-item { grid-template-columns:64px 24px 1fr; gap:0 1rem; }
+      .opt-price { font-size:1.35rem; }
+      .bc-total { font-size:1.5rem; }
+      .options-tabs { gap:.4rem; }
+      .opt-tab { padding:.42rem .85rem; font-size:.75rem; }
+    }
+    @media(max-width:480px){
+      .tl-item { grid-template-columns:52px 22px 1fr; gap:0 .75rem; }
+      .timeline-line { left:52px; }
+      .tl-time { font-size:.7rem; }
     }
 
-    /* ─── REVEAL ─── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: .1s; }
-    .reveal-delay-2 { transition-delay: .2s; }
-    .reveal-delay-3 { transition-delay: .3s; }
-    .reveal-delay-4 { transition-delay: .4s; }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 720px) {
-      .facts-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-      .opt-panel.active { grid-template-columns: 1fr; }
-      .timeline-line { left: 68px; }
-      .tl-item { grid-template-columns: 68px 16px 1fr; gap: 0 1rem; }
-      .opt-price { font-size: 1.4rem; }
-      .bc-total { font-size: 1.65rem; }
-      .options-tabs { gap: .4rem; }
-      .opt-tab { padding: .42rem .85rem; font-size: .78rem; }
-    }
-    @media (max-width: 480px) {
-      .tl-item { grid-template-columns: 56px 14px 1fr; gap: 0 .75rem; }
-      .timeline-line { left: 56px; }
-      .tl-time { font-size: .72rem; }
-      .hero { padding-bottom: 6rem; }
-    }
-
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--shore); }
-    ::-webkit-scrollbar-thumb { background: rgba(36,113,163,.4); border-radius: 3px; }
-    ::selection { background: rgba(36,113,163,.18); color: var(--text); }
+    ::-webkit-scrollbar { width:5px; }
+    ::-webkit-scrollbar-track { background:var(--bg); }
+    ::-webkit-scrollbar-thumb { background:var(--faint); border-radius:3px; }
+    ::selection { background:rgba(201,151,58,.22); color:var(--cream); }
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+<!-- ══ HERO ══ -->
 <header class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-blob b1"></div>
-  <div class="hero-blob b2"></div>
-  <div class="hero-blob b3"></div>
-  <div class="hero-blob b4"></div>
-  <div class="hero-grain"></div>
+  <div class="hero-grid"></div>
 
   <div class="hero-content">
     <p class="hero-eyebrow">Корпоративная программа · Линдэйли</p>
 
     <h1 class="hero-title">
       Ульяновск
-      <em>2 июля 2026</em>
+      <span>2 июля 2026</span>
     </h1>
 
-    <p class="hero-subtitle">День на Волге всей командой</p>
+    <p class="hero-subtitle">День на Волге всей командой — культура, активности, ночлег</p>
 
     <div class="hero-chips">
-      <div class="chip">👥 ~30 участников</div>
-      <div class="chip">🕐 Прибытие 12–13:00</div>
-      <div class="chip">📅 Четверг</div>
-      <div class="chip chip-stay">🏕️ Ночь А: <b>База «Иволга»</b></div>
-      <div class="chip chip-stay">🏨 Ночь Б: <b>Арт Ульяновск ★4.9</b> · 3 800₽/номер</div>
+      <div class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Прибытие 12–13:00
+      </div>
+      <div class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        ~30 участников
+      </div>
+      <div class="chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Четверг, 2 июля
+      </div>
+      <div class="chip chip-stay">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        Ночь А: <b>База «Иволга»</b>
+      </div>
+      <div class="chip chip-stay">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 22V12M21 22V12M12 2L2 12h20L12 2z"/><rect x="9" y="17" width="6" height="5"/></svg>
+        Ночь Б: <b>Арт Ульяновск ★4.9</b> · 3 800₽/номер · завтраки
+      </div>
     </div>
   </div>
 
   <div class="hero-scroll">прокрутите</div>
 
   <div class="hero-wave">
-    <svg viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path d="M0,45 C180,90 360,5 540,45 C720,85 900,10 1080,48 C1260,86 1380,20 1440,45 L1440,90 L0,90 Z" fill="#fdfbf7"/>
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C200,80 420,5 640,42 C860,79 1100,8 1440,40 L1440,80 L0,80 Z" fill="#161310"/>
     </svg>
   </div>
 </header>
 
-<!-- ══════════════════════════════ FACTS ══════════════════════════════ -->
+<!-- ══ FACTS ══ -->
 <div class="facts-bar">
   <div class="facts-inner">
     <div class="fact reveal">
+      <div class="fact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
       <span class="fact-value">7</span>
       <div class="fact-label">часов программы</div>
     </div>
     <div class="fact reveal reveal-delay-1">
+      <div class="fact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
       <span class="fact-value">5</span>
-      <div class="fact-label">вариантов активностей</div>
+      <div class="fact-label">форматов активностей</div>
     </div>
     <div class="fact reveal reveal-delay-2">
+      <div class="fact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
       <span class="fact-value">500₽</span>
-      <div class="fact-label">минимум / чел</div>
+      <div class="fact-label">минимум на человека</div>
     </div>
     <div class="fact reveal reveal-delay-3">
+      <div class="fact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
       <span class="fact-value">2</span>
-      <div class="fact-label">музея мирового уровня</div>
+      <div class="fact-label">музея в программе</div>
     </div>
   </div>
 </div>
 
 <hr class="divider">
 
-<!-- ══════════════════════════════ TIMELINE ══════════════════════════════ -->
+<!-- ══ TIMELINE ══ -->
 <section class="section">
   <div class="reveal">
-    <p class="section-label">Расписание</p>
-    <h2 class="section-title">Программа дня</h2>
-    <p class="section-desc">Прибытие около 12–13:00. Все точки маршрута в шаговой доступности или 10–15 мин на автобусе.</p>
+    <p class="section-label">Расписание дня</p>
+    <h2 class="section-title">Программа <em>2 июля</em></h2>
+    <p class="section-desc">Прибытие ~12–13:00. Все точки в шаговой доступности или 10–15 мин на автобусе.</p>
   </div>
 
   <div class="timeline">
@@ -563,51 +507,60 @@
 
     <div class="tl-item reveal reveal-delay-1">
       <div class="tl-time">12:00</div>
-      <div class="tl-dot"></div>
+      <div class="tl-dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      </div>
       <div class="tl-card">
         <div class="tl-badge">Прибытие</div>
         <h3>Встреча группы</h3>
-        <p>Сбор участников, короткий инструктаж, распределение по транспорту.</p>
+        <p>Сбор участников, короткий инструктаж, распределение по транспорту. Старт экскурсионной программы.</p>
       </div>
     </div>
 
     <div class="tl-item reveal reveal-delay-2">
       <div class="tl-time">13:00</div>
-      <div class="tl-dot"></div>
+      <div class="tl-dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      </div>
       <div class="tl-card">
         <div class="tl-badge">Обед</div>
         <h3>Бизнес-ланч в городе</h3>
-        <p>Кафе или ресторан на группу без банкета. Бронировать заранее.</p>
+        <p>Кафе или ресторан на группу, без банкетного формата. Бронировать заранее — 30 человек нужно оговаривать.</p>
         <div class="tl-meta">
           <span class="meta-pill price">400–700 ₽/чел</span>
-          <span class="meta-pill">~12 000–21 000 ₽</span>
-          <span class="meta-pill">1 час</span>
+          <span class="meta-pill">~12 000–21 000 ₽ итого</span>
+          <span class="meta-pill">~1 час</span>
         </div>
       </div>
     </div>
 
     <div class="tl-item reveal reveal-delay-1">
       <div class="tl-time">14:30</div>
-      <div class="tl-dot"></div>
+      <div class="tl-dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+      </div>
       <div class="tl-card">
         <div class="tl-badge">Культура</div>
         <h3>Музей истории гражданской авиации</h3>
-        <p>70+ самолётов под открытым небом — от советских кукурузников до реактивных лайнеров. Можно зайти внутрь. Один из крупнейших авиамузеев России.</p>
+        <p>70+ самолётов под открытым небом — от советских кукурузников до реактивных лайнеров. Один из крупнейших авиамузеев России. Можно зайти внутрь советских лайнеров.</p>
         <div class="tl-meta">
-          <span class="meta-pill price">150 ₽/чел → ~4 500 ₽</span>
+          <span class="meta-pill price">150 ₽/чел → ~4 500 ₽ на 30</span>
           <span class="meta-pill">ул. Авиационная, 20А</span>
-          <span class="meta-pill">1.5 часа</span>
+          <span class="meta-pill">~1.5 часа</span>
+          <span class="meta-pill">+7 (842) 239-84-81</span>
         </div>
       </div>
     </div>
 
     <div class="tl-item reveal reveal-delay-2">
       <div class="tl-time">16:30</div>
-      <div class="tl-dot"></div>
+      <div class="tl-dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
       <div class="tl-card">
-        <div class="tl-badge">Активность</div>
-        <h3>Основная активность дня ★</h3>
-        <p>На выбор руководства — 5 вариантов с разным форматом и бюджетом. Смотрите раздел ниже.</p>
+        <div class="tl-badge">Основная активность ★</div>
+        <h3>На выбор — 5 форматов</h3>
+        <p>Термы, аквапарк, вейкбординг, экскурсия с гидом или картинг. Детали в разделе ниже — разный бюджет и настроение.</p>
         <div class="tl-meta">
           <span class="meta-pill">500–3 000 ₽/чел</span>
           <span class="meta-pill">2–3 часа</span>
@@ -617,26 +570,28 @@
 
     <div class="tl-item reveal reveal-delay-1">
       <div class="tl-time">19:30</div>
-      <div class="tl-dot"></div>
+      <div class="tl-dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
       <div class="tl-card">
-        <div class="tl-badge">Ночлег — выбор варианта</div>
+        <div class="tl-badge">Ночлег — два варианта</div>
         <h3>Размещение на ночь 2 июля</h3>
-        <p>Два варианта на выбор — зависит от бюджета и формата.</p>
+        <p>Два сценария на выбор — разный бюджет и логистика.</p>
         <div class="tl-options-block">
           <div class="tl-option">
-            <div class="tl-option-label">Вариант А · База отдыха «Иволга»</div>
-            <p>Заволжский район, берег Волги. ~20–30 мин от центра через Президентский мост. Банкет 3 июля там же — группа уже на месте. Размещение в домиках, вечер у воды.</p>
+            <div class="tl-option-label">🏕️ Вариант А · База отдыха «Иволга»</div>
+            <p>Заволжский район, берег Волги. ~20–30 мин от центра через Президентский мост. Банкет 3 июля уже там же — группа на месте. Размещение в домиках, вечер у воды.</p>
             <div class="tl-meta" style="margin-top:.6rem">
               <span class="meta-pill">ул. Оренбургская, 42А</span>
-              <span class="meta-pill price">Банкет 3 июля ✓</span>
+              <span class="meta-pill price">Банкет 3 июля уже забронирован ✓</span>
             </div>
           </div>
           <div class="tl-option">
-            <div class="tl-option-label">Вариант Б · Гостиница «Арт Ульяновск» ★ 4.9</div>
-            <p>13 двухместных номеров = 26 чел. Завтраки включены. Городской отель в центре. Удешевление: не надо ехать на базу 2-го, утром 3-го переезд на Иволгу. Остаток группы (4 чел) — другой отель или база.</p>
+            <div class="tl-option-label">🏨 Вариант Б · Гостиница «Арт Ульяновск» ★ 4.9</div>
+            <p>13 двухместных номеров = 26 человек. Завтраки включены. Центр города. Удешевление на 2-е: ехать на Иволгу не нужно, утром 3-го переезд на банкет. Остаток группы (4 чел) — соседний отель.</p>
             <div class="tl-meta" style="margin-top:.6rem">
-              <span class="meta-pill">3 800 ₽ / номер</span>
-              <span class="meta-pill">13 номеров · 49 400 ₽ / ночь</span>
+              <span class="meta-pill price">3 800 ₽ / номер</span>
+              <span class="meta-pill">13 номеров = 49 400 ₽/ночь</span>
               <span class="meta-pill price">Завтраки включены</span>
             </div>
           </div>
@@ -648,12 +603,12 @@
 
 <hr class="divider">
 
-<!-- ══════════════════════════════ OPTIONS ══════════════════════════════ -->
-<section class="section">
+<!-- ══ OPTIONS ══ -->
+<section class="section stripe">
   <div class="reveal">
-    <p class="section-label">На выбор</p>
-    <h2 class="section-title">Варианты основной активности</h2>
-    <p class="section-desc">Пять сценариев — разный формат, бюджет и настроение. Выберите один для согласования.</p>
+    <p class="section-label">На выбор руководства</p>
+    <h2 class="section-title">Варианты <em>активности</em></h2>
+    <p class="section-desc">Пять сценариев с разным форматом и бюджетом. Выберите один для согласования.</p>
   </div>
 
   <div class="options-tabs reveal">
@@ -670,9 +625,11 @@
     <div class="opt-panel active" id="p1">
       <div class="opt-card">
         <div class="opt-recommend">Рекомендуем</div>
-        <span class="opt-icon">♨️</span>
+        <div class="opt-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
         <h3>Термы «Наутико»</h3>
-        <p>Новый акватермальный комплекс, открылся в январе 2026. 7 бассейнов, 14 бань и саун, хаммам, водные горки. Вмещает 1000 чел — группа из 30 не создаст очередей. Идеально после долгой дороги: расслабиться перед завтрашним банкетом.</p>
+        <p>Новый акватермальный комплекс (открылся в январе 2026). 7 бассейнов, 14 бань и саун, хаммам, водные горки. Вмещает 1000 чел — группа из 30 не создаст очередей. Идеально расслабиться перед завтрашним банкетом.</p>
         <div class="opt-price-row">
           <div class="opt-price">47 700 ₽</div>
           <div class="opt-price-sub">на 30 чел · безлимит</div>
@@ -686,7 +643,9 @@
         <a href="https://2gis.ru/ulyanovsk/firm/70000001106161970" class="opt-link" target="_blank">2GIS · Термы Наутико</a>
       </div>
       <div class="opt-card">
-        <span class="opt-icon">🌲</span>
+        <div class="opt-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 19.82A1 1 0 0 0 5 21C5 21 6 20 9 20c3 0 4 1 8 1 4 0 7-3 7-7 0-3.78-2.5-6-5-6"/><path d="M16.5 8C15 6 13 5 11 5c-2 0-4 1-4 3s2 4 5 4"/></svg>
+        </div>
         <h3>Термы.ЛES (альтернатива)</h3>
         <p>Термальный комплекс в сосновом лесу. Три бассейна с подогревом до 37°С, джакузи с цветной подсветкой, водопад. Более камерный формат, атмосферно. Хорошо сочетается с музеем авиации — оба в одном районе.</p>
         <div class="opt-price-row">
@@ -705,9 +664,11 @@
     <!-- ВАРИАНТ 2 -->
     <div class="opt-panel" id="p2">
       <div class="opt-card">
-        <span class="opt-icon">🌊</span>
+        <div class="opt-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 12c0-5.52 4.48-10 10-10s10 4.48 10 10M2 12c0 5.52 4.48 10 10 10S22 17.52 22 12"/><path d="M12 2v20"/></svg>
+        </div>
         <h3>Аквапарк «Улёт»</h3>
-        <p>Крытый аквапарк с горками, бассейнами, джакузи. Работает ежедневно 09:00–22:00. Групповые скидки от 10 чел — уточнять по телефону. Активный и весёлый формат, больше движения и эмоций чем в термах.</p>
+        <p>Крытый аквапарк с горками, бассейнами, джакузи. Работает ежедневно 09:00–22:00. Групповые скидки от 10 чел — уточнять по телефону. Активный и весёлый формат, больше движения чем в термах.</p>
         <div class="opt-price-row">
           <div class="opt-price">~79 500 ₽</div>
           <div class="opt-price-sub">до скидки · будни</div>
@@ -721,9 +682,11 @@
         <a href="https://aquaulet.ru/" class="opt-link" target="_blank">aquaulet.ru</a>
       </div>
       <div class="opt-card">
-        <span class="opt-icon">📞</span>
-        <h3>Что уточнить</h3>
-        <p>Позвонить в аквапарк и запросить групповой тариф на 30 чел на 2 июля (будний день). Обычно скидка 15–25% для организованных групп. Попросить зарезервировать раздевалки.</p>
+        <div class="opt-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.1 11.7 19.79 19.79 0 0 1 1.08 3 2 2 0 0 1 3 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h3>Как забронировать</h3>
+        <p>Позвонить и запросить групповой тариф на 30 чел на 2 июля (будний день). Обычно скидка 15–25% для организованных групп. Попросить зарезервировать раздевалки заранее.</p>
         <div class="opt-price-row">
           <div class="opt-price">~60 000 ₽</div>
           <div class="opt-price-sub">примерно со скидкой</div>
@@ -731,6 +694,7 @@
         <div class="opt-tags">
           <span class="opt-tag">8 (8422) 24-10-31</span>
           <span class="opt-tag">Бронь заранее</span>
+          <span class="opt-tag">Скидка от 10 чел</span>
         </div>
       </div>
     </div>
@@ -738,12 +702,14 @@
     <!-- ВАРИАНТ 3 -->
     <div class="opt-panel" id="p3">
       <div class="opt-card">
-        <span class="opt-icon">🏄</span>
+        <div class="opt-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
         <h3>Вейк-парк на Свияге</h3>
-        <p>Вейкбординг на тросовой установке на реке Свияге. Летом на открытой воде — необычно и запоминается. Можно брать всей группой по очереди. Инструкторы на месте, оборудование в аренду.</p>
+        <p>Вейкбординг на тросовой установке на реке Свияге. Летом на открытой воде — необычно и запоминается. Можно брать всей группой по очереди. Инструкторы на месте, всё оборудование в аренду.</p>
         <div class="opt-price-row">
           <div class="opt-price">~45 000 ₽</div>
-          <div class="opt-price-sub">безлимит 30 чел</div>
+          <div class="opt-price-sub">безлимит · 30 чел</div>
         </div>
         <div class="opt-tags">
           <span class="opt-tag">1 500 ₽/чел безлимит</span>
@@ -752,9 +718,11 @@
         </div>
       </div>
       <div class="opt-card">
-        <span class="opt-icon">🎯</span>
+        <div class="opt-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+        </div>
         <h3>+ Лазертаг вечером</h3>
-        <p>После вейка — лазертаг для тимбилдинга. Арена «Галактика» (ТРЦ «Пушкарёвское кольцо») или центр «Партизан». Разбить на команды по 5–6 человек, корпоративный турнир.</p>
+        <p>После вейка — лазертаг для тимбилдинга. Арена «Галактика» (ТРЦ «Пушкарёвское кольцо») или центр «Партизан». Разбить на команды по 5–6 человек, корпоративный турнир с призами.</p>
         <div class="opt-price-row">
           <div class="opt-price">~24 000 ₽</div>
           <div class="opt-price-sub">лазертаг · 30 чел</div>
@@ -764,39 +732,43 @@
           <span class="opt-tag">Тимбилдинг</span>
           <span class="opt-tag">Командный</span>
         </div>
-        <a href="https://laser-battle.ru/catalog/ulyanovsk/" class="opt-link" target="_blank">Все лазертаг-клубы</a>
+        <a href="https://laser-battle.ru/catalog/ulyanovsk/" class="opt-link" target="_blank">Все лазертаг-клубы Ульяновска</a>
       </div>
     </div>
 
     <!-- ВАРИАНТ 4 -->
     <div class="opt-panel" id="p4">
       <div class="opt-card">
-        <span class="opt-icon">🚶</span>
+        <div class="opt-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
         <h3>Обзорная экскурсия с гидом</h3>
-        <p>Пешеходная или автобусная экскурсия по историческому центру — Музейный квартал, Соборная площадь, набережная Волги. Гид рассказывает про Симбирск-Ульяновск от основания до наших дней. Бронировать через Sputnik8 или GuideGo — оба агрегатора позволяют выбрать гида и формат под группу.</p>
+        <p>Пешеходная или автобусная экскурсия по историческому центру — Музейный квартал, Соборная площадь, набережная Волги. Гид рассказывает про Симбирск-Ульяновск. Бронировать через Sputnik8 или GuideGo.</p>
         <div class="opt-price-row">
           <div class="opt-price">~5 000 ₽</div>
-          <div class="opt-price-sub">гид на группу, 2–3 часа</div>
+          <div class="opt-price-sub">гид на группу · 2–3 часа</div>
         </div>
         <div class="opt-tags">
           <span class="opt-tag">~167 ₽/чел</span>
           <span class="opt-tag">Исторический центр</span>
           <span class="opt-tag">Без предоплаты</span>
         </div>
-        <a href="https://sputnik8.com/ru/ulyanovsk" class="opt-link" target="_blank">sputnik8.com · экскурсии Ульяновск</a>
+        <a href="https://sputnik8.com/ru/ulyanovsk" class="opt-link" target="_blank">sputnik8.com · экскурсии</a>
       </div>
       <div class="opt-card">
-        <span class="opt-icon">🏛️</span>
+        <div class="opt-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </div>
         <h3>+ Музей-заповедник «Родина Ленина»</h3>
-        <p>174 га исторической застройки Симбирска XIX века прямо в центре города. Деревянные особняки, мощёные улочки, усадьбы купцов — атмосфера дореволюционного города. Групповая экскурсия с музейным гидом по предварительной записи. Тел.: 8(8422) 32-45-32.</p>
+        <p>174 га исторической застройки Симбирска XIX века в центре города. Деревянные особняки, мощёные улочки, усадьбы купцов. Групповая экскурсия по предварительной записи. Тел.: 8(8422) 32-45-32.</p>
         <div class="opt-price-row">
           <div class="opt-price">~5 700 ₽</div>
-          <div class="opt-price-sub">билеты + экскурсия на группу</div>
+          <div class="opt-price-sub">билеты + экскурсовод</div>
         </div>
         <div class="opt-tags">
           <span class="opt-tag">100 ₽/чел</span>
-          <span class="opt-tag">+ 2 700 ₽ экскурсовод</span>
-          <span class="opt-tag">Самый бюджетный день</span>
+          <span class="opt-tag">+ 2 700 ₽ гид</span>
+          <span class="opt-tag">Самый бюджетный</span>
         </div>
         <a href="https://www.ulzapovednik.ru/" class="opt-link" target="_blank">ulzapovednik.ru</a>
       </div>
@@ -805,9 +777,11 @@
     <!-- ВАРИАНТ 5 -->
     <div class="opt-panel" id="p5">
       <div class="opt-card">
-        <span class="opt-icon">🏛️</span>
+        <div class="opt-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </div>
         <h3>Музей-заповедник «Родина Ленина»</h3>
-        <p>174 га исторической застройки Симбирска XIX века в центре города. Деревянные особняки, мощёные улочки — уникальная атмосфера. Экскурсия с музейным гидом по предварительной записи. Работает независимо от погоды. Тел.: 8(8422) 32-45-32.</p>
+        <p>174 га исторической застройки Симбирска XIX века в центре города. Деревянные особняки, мощёные улочки, атмосфера дореволюционного Симбирска. Экскурсия по предварительной записи. Тел.: 8(8422) 32-45-32.</p>
         <div class="opt-price-row">
           <div class="opt-price">~5 700 ₽</div>
           <div class="opt-price-sub">30 чел · билеты + гид</div>
@@ -820,9 +794,11 @@
         <a href="https://www.ulzapovednik.ru/" class="opt-link" target="_blank">ulzapovednik.ru</a>
       </div>
       <div class="opt-card">
-        <span class="opt-icon">🏎️</span>
+        <div class="opt-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3m4 0h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2z"/></svg>
+        </div>
         <h3>+ Картинг KartKlub</h3>
-        <p>Крупнейший крытый картодром в Ульяновске. Аренда трассы целиком на компанию — 12 500 ₽/час. Корпоративный турнир с разбивкой на команды, подведением итогов и вручением призов. Азарт, соревновательный дух, запоминается надолго.</p>
+        <p>Крупнейший крытый картодром в Ульяновске. Аренда трассы целиком на компанию — 12 500 ₽/час. Корпоративный турнир с разбивкой на команды, подведением итогов и призами.</p>
         <div class="opt-price-row">
           <div class="opt-price">~25 000 ₽</div>
           <div class="opt-price-sub">2 часа · вся трасса</div>
@@ -835,22 +811,24 @@
         <a href="https://73.kartklub.ru/katanie/" class="opt-link" target="_blank">73.kartklub.ru</a>
       </div>
     </div>
-
   </div>
 </section>
 
 <hr class="divider">
 
-<!-- ══════════════════════════════ BUDGET ══════════════════════════════ -->
+<!-- ══ BUDGET ══ -->
 <section class="section">
   <div class="reveal">
     <p class="section-label">Финансы</p>
-    <h2 class="section-title">Бюджет по вариантам</h2>
+    <h2 class="section-title">Бюджет <em>по вариантам</em></h2>
     <p class="section-desc">Без транспорта и алкоголя. Аренда автобуса на день — ~8 000–15 000 ₽ отдельно.</p>
   </div>
 
   <div class="budget-grid">
     <div class="budget-card highlight reveal reveal-delay-1">
+      <div class="bc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
       <div class="bc-name">Термы «Наутико»</div>
       <div class="bc-total">~56 000 ₽</div>
       <div class="bc-per">~1 870 ₽ / чел</div>
@@ -861,8 +839,10 @@
         <li>Термы безлимит <span>47 700 ₽</span></li>
       </ul>
     </div>
-
     <div class="budget-card reveal reveal-delay-2">
+      <div class="bc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 12c0-5.52 4.48-10 10-10s10 4.48 10 10M2 12c0 5.52 4.48 10 10 10S22 17.52 22 12"/></svg>
+      </div>
       <div class="bc-name">Аквапарк «Улёт»</div>
       <div class="bc-total">~100 000 ₽</div>
       <div class="bc-per">~3 300 ₽ / чел</div>
@@ -873,8 +853,10 @@
         <li>Аквапарк <span>~79 500 ₽</span></li>
       </ul>
     </div>
-
     <div class="budget-card reveal reveal-delay-3">
+      <div class="bc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
       <div class="bc-name">Вейк + Лазертаг</div>
       <div class="bc-total">~86 000 ₽</div>
       <div class="bc-per">~2 870 ₽ / чел</div>
@@ -886,8 +868,10 @@
         <li>Лазертаг <span>24 000 ₽</span></li>
       </ul>
     </div>
-
     <div class="budget-card reveal reveal-delay-4">
+      <div class="bc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
       <div class="bc-name">Экскурсия + Музей</div>
       <div class="bc-total">~32 000 ₽</div>
       <div class="bc-per">~1 070 ₽ / чел</div>
@@ -899,8 +883,10 @@
         <li>Музей-заповедник <span>~5 700 ₽</span></li>
       </ul>
     </div>
-
     <div class="budget-card reveal reveal-delay-1">
+      <div class="bc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3m4 0h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2z"/></svg>
+      </div>
       <div class="bc-name">Картинг</div>
       <div class="bc-total">~46 000 ₽</div>
       <div class="bc-per">~1 530 ₽ / чел</div>
@@ -917,12 +903,12 @@
 
 <hr class="divider">
 
-<!-- ══════════════════════════════ CHECKLIST ══════════════════════════════ -->
-<section class="section">
+<!-- ══ CHECKLIST ══ -->
+<section class="section stripe">
   <div class="reveal">
     <p class="section-label">Следующие шаги</p>
-    <h2 class="section-title">Что сделать до согласования</h2>
-    <p class="section-desc">После выбора варианта руководством — пройтись по списку.</p>
+    <h2 class="section-title">Что сделать <em>до отъезда</em></h2>
+    <p class="section-desc">После согласования варианта руководством — пройтись по списку.</p>
   </div>
 
   <div class="checklist">
@@ -930,7 +916,7 @@
       <div class="check-num">1</div>
       <div class="check-text">
         <strong>Выбрать вариант активности</strong>
-        <span>Согласовать один из 5 форматов с руководством. Прислать эту страницу.</span>
+        <span>Согласовать один из 5 форматов. Прислать эту страницу руководству.</span>
       </div>
     </div>
     <div class="check-item reveal reveal-delay-2">
@@ -943,22 +929,22 @@
     <div class="check-item reveal reveal-delay-3">
       <div class="check-num">3</div>
       <div class="check-text">
-        <strong>Забронировать обзорный тур</strong>
-        <span>sputnik8.com или guidego.ru — за 1–2 недели. Гид на группу 30 чел.</span>
+        <strong>Забронировать гида на экскурсию</strong>
+        <span>sputnik8.com или guidego.ru — за 1–2 недели. Гид для группы 30 чел.</span>
       </div>
     </div>
     <div class="check-item reveal reveal-delay-4">
       <div class="check-num">4</div>
       <div class="check-text">
         <strong>Забронировать кафе под обед</strong>
-        <span>30 чел, 13:00–14:00, без банкета. Бизнес-ланч или сет-меню.</span>
+        <span>30 чел, 13:00–14:00, бизнес-ланч или сет-меню, без банкета.</span>
       </div>
     </div>
     <div class="check-item reveal reveal-delay-1">
       <div class="check-num">5</div>
       <div class="check-text">
-        <strong>Активность — подтвердить брони</strong>
-        <span>Термы / Аквапарк / Вейк+лазертаг / Экскурсия / Картинг — за 1–2 недели до даты.</span>
+        <strong>Основная активность — бронь</strong>
+        <span>Термы / Аквапарк / Вейк / Картинг — за 1–2 недели. Для экскурсии — через sputnik8.</span>
       </div>
     </div>
     <div class="check-item reveal reveal-delay-2">
@@ -971,49 +957,42 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+<!-- ══ FOOTER ══ -->
 <footer>
   <div class="ft-logo">Линдэйли · Корпоратив 2026</div>
-  <p>Ульяновск · 2–3 июля 2026 · База отдыха «Иволга»</p>
-  <p style="margin-top:.5rem; opacity:.6">Все цены ориентировочные, уточняйте у организаторов перед бронированием</p>
+  <p>Ульяновск · 2–3 июля · База отдыха «Иволга»</p>
+  <p style="margin-top:.4rem; font-size:.76rem">Все цены ориентировочные — уточняйте у организаторов перед бронированием</p>
 </footer>
 
 <script>
-  // Reveal on scroll
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: .12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Budget bars
   const barIo = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        const fill = e.target.querySelector('.bc-bar-fill');
-        if (fill) fill.style.width = fill.dataset.width;
+      if(e.isIntersecting){
+        const f = e.target.querySelector('.bc-bar-fill');
+        if(f) f.style.width = f.dataset.width;
         barIo.unobserve(e.target);
       }
     });
   }, { threshold: .3 });
   document.querySelectorAll('.budget-card').forEach(el => barIo.observe(el));
 
-  // Tabs
   const tabs = document.querySelectorAll('.opt-tab');
   const panels = document.querySelectorAll('.opt-panel');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById(tab.dataset.panel).classList.add('active');
-    });
-  });
+  tabs.forEach(tab => tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.panel).classList.add('active');
+  }));
 
-  // Subtle parallax on hero
   window.addEventListener('scroll', () => {
-    const y = window.scrollY;
     const bg = document.querySelector('.hero-bg');
-    if (bg) bg.style.transform = `translateY(${y * .25}px)`;
+    if(bg) bg.style.transform = `translateY(${window.scrollY * .22}px)`;
   }, { passive: true });
 </script>
 </body>
