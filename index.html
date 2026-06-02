@@ -325,6 +325,11 @@
     }
     .meta-pill.price { border-color: rgba(201,151,58,.3); color: var(--gold-lt); }
 
+    .tl-options-block { display: flex; flex-direction: column; gap: 1rem; margin-top: .8rem; }
+    .tl-option { padding: .9rem 1rem; border-radius: 8px; border: 1px solid var(--border); background: rgba(255,255,255,.02); }
+    .tl-option-label { font-size: .8rem; font-weight: 500; color: var(--gold); margin-bottom: .4rem; letter-spacing: .02em; }
+    .tl-option p { font-size: .88rem; color: var(--cream); opacity: .8; margin: 0; }
+
     /* ─── OPTIONS ─── */
     .options-tabs {
       display: flex; flex-wrap: wrap; gap: .6rem;
@@ -720,12 +725,27 @@
       <div class="tl-time">19:30</div>
       <div class="tl-dot"></div>
       <div class="tl-card">
-        <div class="tl-badge">Переезд</div>
-        <h3>Заезд на базу отдыха «Иволга»</h3>
-        <p>Заволжский район, берег Волги. ~20–30 минут от центра через Президентский мост. Размещение, свободное время, подготовка к завтрашнему банкету.</p>
-        <div class="tl-meta">
-          <span class="meta-pill">ул. Оренбургская, 42А</span>
-          <span class="meta-pill price">Забронировано ✓</span>
+        <div class="tl-badge">Ночлег — выбор варианта</div>
+        <h3>Размещение на ночь 2 июля</h3>
+        <p>Два варианта на выбор — зависит от бюджета и формата.</p>
+        <div class="tl-options-block">
+          <div class="tl-option">
+            <div class="tl-option-label">Вариант А · База отдыха «Иволга»</div>
+            <p>Заволжский район, берег Волги. ~20–30 мин от центра через Президентский мост. Банкет 3 июля там же — группа уже на месте. Размещение в домиках, вечер у воды.</p>
+            <div class="tl-meta" style="margin-top:.6rem">
+              <span class="meta-pill">ул. Оренбургская, 42А</span>
+              <span class="meta-pill price">Банкет 3 июля ✓</span>
+            </div>
+          </div>
+          <div class="tl-option">
+            <div class="tl-option-label">Вариант Б · Гостиница «Арт Ульяновск» ★ 4.9</div>
+            <p>13 двухместных номеров = 26 чел. Завтраки включены. Городской отель, центр. Удешевление: не надо ехать на базу 2-го, утром 3-го переезд на Иволгу. Остаток группы (4 чел) — другой отель или база.</p>
+            <div class="tl-meta" style="margin-top:.6rem">
+              <span class="meta-pill">3 800 ₽ / номер</span>
+              <span class="meta-pill">13 номеров · 49 400 ₽ / ночь</span>
+              <span class="meta-pill price">Завтраки включены</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
